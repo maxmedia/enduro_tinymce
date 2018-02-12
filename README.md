@@ -18,6 +18,8 @@ Use the type `tinymce`.
 - Unordered list
 - Link
 
+**NOTE: BRICK SETTINGS BELOW ARE CURRENTLY OFF. A FUTURE UPDATE WILL ADD THEM IN**
+
 You can add additional actions from the brick options in `enduro.json` at the root of your Enduro project. For example:
 
 ```
