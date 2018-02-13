@@ -14,15 +14,15 @@ enduro_admin_app.compileProvider
   .directive('tinymce', function () {
     return {
       link: function (scope, element, attr) {
-        $.getScript('/assets/js/vendor/tinymce/js/tinymce/tinymce.min.js', function () {
+        $(function() {
           var wysiwyg = tinymce.init({
-            "selector": "[tinymce]",
+            target: element[0],
             init_instance_callback: function (editor) {
               editor.on('Change', function (e) {
                 scope.context[scope.terminatedkey] = e.level.content
               });
               scope.$watch('current_culture', function () {
-                console.log(editor.getContent());
+                // console.log(editor.getContent());
                 editor.setContent(scope.context[scope.terminatedkey] || '');
               });
               editor.setContent(scope.context[scope.terminatedkey]);
@@ -36,8 +36,8 @@ enduro_admin_app.compileProvider
               'insertdatetime table contextmenu code wordcount'
             ],
             toolbar: 'insert | undo redo | formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | paste removeformat code | help'
-          })
-        })
+          });
+        });
       }
     }
   })
