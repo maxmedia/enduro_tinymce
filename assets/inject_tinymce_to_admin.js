@@ -19,17 +19,43 @@ enduro_admin_app.compileProvider
             target: element[0],
             init_instance_callback: function (editor) {
               editor.on('Change', function (e) {
-                scope.context[scope.terminatedkey] = e.level.content
+                if (
+                  e.level.content == '<p><br data-mce-bogus="1"></p>'
+                  ||
+                  e.level.content == '<p><br></p>'
+                ){
+                  scope.context[scope.terminatedkey] = '';
+                } else {
+                  scope.context[scope.terminatedkey] = e.level.content;
+                }
               });
               scope.$watch('current_culture', function () {
                 // console.log(editor.getContent());
-                editor.setContent(scope.context[scope.terminatedkey] || '');
+                if (
+                  scope.context[scope.terminatedkey] == '<p><br data-mce-bogus="1"></p>'
+                  ||
+                  scope.context[scope.terminatedkey] == '<p><br></p>'
+                ){
+                  editor.setContent(scope.context[scope.terminatedkey] || '');
+                } else {
+                  editor.setContent(scope.context[scope.terminatedkey] || '');
+                }
               });
-              editor.setContent(scope.context[scope.terminatedkey]);
+              if (
+                scope.context[scope.terminatedkey] == '<p><br data-mce-bogus="1"></p>'
+                ||
+                scope.context[scope.terminatedkey] == '<p><br></p>'
+              ){
+                editor.setContent(scope.context[scope.terminatedkey]);
+              } else {
+                editor.setContent(scope.context[scope.terminatedkey]);
+              }
+
             },
             height:500,
             menubar: false,
             block_formats: 'Paragraph=p;',
+            format: 'html',
             plugins: [
               'advlist autolink lists link charmap paste print preview anchor',
               'searchreplace visualblocks code fullscreen',
