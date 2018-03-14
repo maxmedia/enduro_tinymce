@@ -52,6 +52,7 @@ enduro_admin_app.compileProvider
               }
 
             },
+            browser_spellcheck : true,
             height:500,
             menubar: false,
             block_formats: 'Paragraph=p;',
@@ -59,7 +60,7 @@ enduro_admin_app.compileProvider
             plugins: [
               'advlist autolink lists link charmap paste print preview anchor',
               'searchreplace visualblocks code fullscreen',
-              'insertdatetime table contextmenu code wordcount'
+              'insertdatetime table code wordcount'
             ],
             toolbar: 'insert | undo redo | formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | paste removeformat code | help'
           });
