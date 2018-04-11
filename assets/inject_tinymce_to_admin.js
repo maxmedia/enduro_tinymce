@@ -52,6 +52,7 @@ enduro_admin_app.compileProvider
               }
 
             },
+            relative_urls : false,
             browser_spellcheck : true,
             height:500,
             menubar: false,
